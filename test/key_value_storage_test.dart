@@ -13,20 +13,23 @@ void main() {
   group('Test the write keys', () {
     test('Write empty list', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
-      when(mockSecureStorage.write(key: 'flutter_key_value_file_storage_keys', value: ''))
+      when(mockSecureStorage.write(
+              key: 'flutter_key_value_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
       when(mockSecureStorage.read(key: 'flutter_key_value_file_storage_keys'))
           .thenAnswer((realInvocation) async => '');
       final secureStorage = KeyValueStorage(mockSecureStorage,
           keysStorageKey: 'flutter_key_value_file_storage_keys');
       await secureStorage.saveKeys([]);
-      verify(mockSecureStorage.delete(key: 'flutter_key_value_file_storage_keys'))
+      verify(mockSecureStorage.delete(
+              key: 'flutter_key_value_file_storage_keys'))
           .called(1);
       verifyNoMoreInteractions(mockSecureStorage);
     });
     test('Empty text', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
-      when(mockSecureStorage.write(key: 'flutter_key_value_file_storage_keys', value: ''))
+      when(mockSecureStorage.write(
+              key: 'flutter_key_value_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
       final secureStorage = KeyValueStorage(mockSecureStorage,
           keysStorageKey: 'flutter_key_value_file_storage_keys');
@@ -102,8 +105,9 @@ void main() {
     });
     test('2 values', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
-      when(mockSecureStorage.read(key: 'flutter_key_value_file_storage_keys')).thenAnswer(
-          (realInvocation) async => 'sdalkjfia3924e,sdajlkfjal390u2');
+      when(mockSecureStorage.read(key: 'flutter_key_value_file_storage_keys'))
+          .thenAnswer(
+              (realInvocation) async => 'sdalkjfia3924e,sdajlkfjal390u2');
       final secureStorage = KeyValueStorage(mockSecureStorage,
           keysStorageKey: 'flutter_key_value_file_storage_keys');
       final data = await secureStorage.readKeys();
