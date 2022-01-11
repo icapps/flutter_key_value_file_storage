@@ -13,8 +13,7 @@ void main() {
   group('Test the write keys', () {
     test('Write empty list', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
-      when(mockSecureStorage.write(
-              key: 'flutter_file_storage_keys', value: ''))
+      when(mockSecureStorage.write(key: 'flutter_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
       when(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
           .thenAnswer((realInvocation) async => '');
@@ -26,8 +25,7 @@ void main() {
     });
     test('Empty text', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
-      when(mockSecureStorage.write(
-              key: 'flutter_file_storage_keys', value: ''))
+      when(mockSecureStorage.write(key: 'flutter_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
       final secureStorage = KeyValueStorage(mockSecureStorage);
       await secureStorage.saveKeys(['']);
@@ -97,9 +95,8 @@ void main() {
     });
     test('2 values', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
-      when(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
-          .thenAnswer(
-              (realInvocation) async => 'sdalkjfia3924e,sdajlkfjal390u2');
+      when(mockSecureStorage.read(key: 'flutter_file_storage_keys')).thenAnswer(
+          (realInvocation) async => 'sdalkjfia3924e,sdajlkfjal390u2');
       final secureStorage = KeyValueStorage(mockSecureStorage);
       final data = await secureStorage.readKeys();
       expect(data, ['sdalkjfia3924e', 'sdajlkfjal390u2']);

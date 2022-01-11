@@ -41,8 +41,11 @@ abstract class FileStorageManager {
     assert(key.isNotEmpty, 'key must not be empty');
     await _synchronized(key, () async {
       if (value == null) return delete(key: key);
-      assert(T == String || T == Uint8List, 'value must be String or Uint8List');
-      final convertedValue = (value is String) ? Uint8List.fromList(utf8.encode(value)) : value as Uint8List;
+      assert(
+          T == String || T == Uint8List, 'value must be String or Uint8List');
+      final convertedValue = (value is String)
+          ? Uint8List.fromList(utf8.encode(value))
+          : value as Uint8List;
       await performWrite(fileName: _filename(key), value: convertedValue);
       await _getKeys();
       _keys.add(key);
@@ -119,7 +122,8 @@ abstract class FileStorageManager {
     String key,
     FutureOr<T> Function() computation,
   ) async {
-    final lock = await _locksLock.synchronized(() => _locks.putIfAbsent(key, () => Lock(reentrant: true)));
+    final lock = await _locksLock.synchronized(
+        () => _locks.putIfAbsent(key, () => Lock(reentrant: true)));
     try {
       final result = await lock.synchronized(() => computation.call());
       await _locksLock.synchronized(() => _locks.remove(lock));
@@ -129,7 +133,8 @@ abstract class FileStorageManager {
     }
   }
 
-  Future<void> performWrite({required String fileName, required Uint8List value});
+  Future<void> performWrite(
+      {required String fileName, required Uint8List value});
 
   Future<Uint8List?> performRead({required String fileName});
 

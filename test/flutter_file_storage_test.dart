@@ -30,8 +30,8 @@ void main() {
         'dGVzdA==.enc',
         any, //because of a random generated keys
       )).thenAnswer((realInvocation) async => File('test_path'));
-      final flutterSecureStorage = FlutterFileStorage(mockSecureStorage,
-          fileStorage: mockFileStorage);
+      final flutterSecureStorage =
+          FlutterFileStorage(mockSecureStorage, fileStorage: mockFileStorage);
       await flutterSecureStorage.write(key: 'test', value: 'content');
       verify(mockSecureStorage.write(key: 'test-iv', value: anyNamed('value')))
           .called(1);
@@ -49,8 +49,7 @@ void main() {
     test('2 writes', () async {
       final mockSecureStorage = MockFlutterSecureStorage();
       final mockFileStorage = MockFileStorage();
-      when(mockSecureStorage.write(
-              key: 'flutter_file_storage_keys', value: ''))
+      when(mockSecureStorage.write(key: 'flutter_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
       when(mockSecureStorage.read(key: 'test-key')).thenAnswer(
           (realInvocation) async => 'test-key123456789123456789123456');
@@ -62,17 +61,15 @@ void main() {
         'dGVzdA==.enc',
         any, //because of a random generated keys
       )).thenAnswer((realInvocation) async => File('test_path'));
-      final flutterFileStorage = FlutterFileStorage(
-          mockSecureStorage,
-          fileStorage: mockFileStorage);
+      final flutterFileStorage =
+          FlutterFileStorage(mockSecureStorage, fileStorage: mockFileStorage);
       await flutterFileStorage.write(key: 'test', value: 'content');
       verify(mockSecureStorage.write(key: 'test-iv', value: anyNamed('value')))
           .called(1);
       reset(mockFileStorage);
       reset(mockSecureStorage);
 
-      when(mockSecureStorage.write(
-              key: 'flutter_file_storage_keys', value: ''))
+      when(mockSecureStorage.write(key: 'flutter_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
       when(mockSecureStorage.read(key: 'test2-key')).thenAnswer(
           (realInvocation) async => 'test2-key12345678912345678912345');
@@ -89,8 +86,7 @@ void main() {
       verify(mockSecureStorage.write(key: 'test2-iv', value: anyNamed('value')))
           .called(1);
       verify(mockSecureStorage.write(
-              key: 'flutter_file_storage_keys',
-              value: 'dGVzdA==,dGVzdDI='))
+              key: 'flutter_file_storage_keys', value: 'dGVzdA==,dGVzdDI='))
           .called(1);
       verify(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
           .called(1);

@@ -13,7 +13,8 @@ class FlutterFileStorageManager extends FileStorageManager {
   }) : super(storage, fileStorage: fileStorage, keysStorageKey: keysStorageKey);
 
   @override
-  Future<void> performWrite({required String fileName, required Uint8List value}) async {
+  Future<void> performWrite(
+      {required String fileName, required Uint8List value}) async {
     await fileStorage.write(fileName, value);
   }
 
@@ -23,7 +24,8 @@ class FlutterFileStorageManager extends FileStorageManager {
   }
 
   @override
-  Future<bool> performContainsKey({required String fileName}) => fileStorage.exists(fileName);
+  Future<bool> performContainsKey({required String fileName}) =>
+      fileStorage.exists(fileName);
 
   @override
   Future<void> performDelete({required String fileName}) async {

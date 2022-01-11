@@ -18,7 +18,8 @@ class FlutterFileStorage {
     FileStorage? fileStorage,
     String? keysStorageKey,
   }) {
-    fileStorageManager = FlutterFileStorageManager(storage, fileStorage: fileStorage, keysStorageKey: keysStorageKey);
+    fileStorageManager = FlutterFileStorageManager(storage,
+        fileStorage: fileStorage, keysStorageKey: keysStorageKey);
   }
 
   /// Saved the given [value] with [key]

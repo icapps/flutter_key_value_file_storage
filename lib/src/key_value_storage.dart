@@ -18,7 +18,8 @@ class KeyValueStorage {
   Future<void> saveKeys(List<String> keys) {
     return _keysLock.synchronized(() async {
       if (keys.isEmpty) return _storage.delete(key: _keysStorageKey);
-      return _storage.write(key: _keysStorageKey, value: keys.join(_keysStorageDelimiter));
+      return _storage.write(
+          key: _keysStorageKey, value: keys.join(_keysStorageDelimiter));
     });
   }
 
