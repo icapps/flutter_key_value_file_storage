@@ -10,7 +10,7 @@ import 'package:flutter_key_value_file_storage/flutter_key_value_file_storage.da
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 // Create storage
-final storage = FlutterFileStorage(FlutterSecureStorage());
+final storage = FlutterKeyValueFileStorage(FlutterSecureStorage());
 
 // Read value
 final value = await storage.read<String>(key: key);
