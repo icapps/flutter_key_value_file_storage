@@ -7,11 +7,15 @@ import 'package:flutter_file_storage/src/file_storage_manager/file_storage_manag
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class FlutterFileStorageManager extends FileStorageManager {
+  static const _keysStorageKeyDefault = 'flutter_file_storage_keys';
+
   FlutterFileStorageManager(
     FlutterSecureStorage storage, {
     FileStorage? fileStorage,
     String? keysStorageKey,
-  }) : super(storage, fileStorage: fileStorage, keysStorageKey: keysStorageKey);
+  }) : super(storage,
+            fileStorage: fileStorage,
+            keysStorageKey: keysStorageKey ?? _keysStorageKeyDefault);
 
   @override
   Future<void> performWrite(

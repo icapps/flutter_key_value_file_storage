@@ -22,8 +22,8 @@ abstract class FileStorageManager {
   ///   - fileStorage to save, read, delete the file
   FileStorageManager(
     FlutterSecureStorage storage, {
+    required String keysStorageKey,
     FileStorage? fileStorage,
-    String? keysStorageKey,
   }) {
     _keyValueStorage = KeyValueStorage(storage, keysStorageKey: keysStorageKey);
     this.fileStorage = fileStorage ?? DocumentsFileStorage();

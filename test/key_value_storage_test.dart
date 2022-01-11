@@ -17,7 +17,8 @@ void main() {
           .thenAnswer((realInvocation) => Future.value());
       when(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
           .thenAnswer((realInvocation) async => '');
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       await secureStorage.saveKeys([]);
       verify(mockSecureStorage.delete(key: 'flutter_file_storage_keys'))
           .called(1);
@@ -27,7 +28,8 @@ void main() {
       final mockSecureStorage = MockFlutterSecureStorage();
       when(mockSecureStorage.write(key: 'flutter_file_storage_keys', value: ''))
           .thenAnswer((realInvocation) => Future.value());
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       await secureStorage.saveKeys(['']);
       verify(mockSecureStorage.write(
               key: 'flutter_file_storage_keys', value: ''))
@@ -39,7 +41,8 @@ void main() {
       when(mockSecureStorage.write(
               key: 'flutter_file_storage_keys', value: 'test'))
           .thenAnswer((realInvocation) => Future.value());
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       await secureStorage.saveKeys(['test']);
       verify(mockSecureStorage.write(
               key: 'flutter_file_storage_keys', value: 'test'))
@@ -51,7 +54,8 @@ void main() {
       when(mockSecureStorage.write(
               key: 'flutter_file_storage_keys', value: 'test,test2'))
           .thenAnswer((realInvocation) => Future.value());
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       await secureStorage.saveKeys(['test', 'test2']);
       verify(mockSecureStorage.write(
               key: 'flutter_file_storage_keys', value: 'test,test2'))
@@ -64,7 +68,8 @@ void main() {
       final mockSecureStorage = MockFlutterSecureStorage();
       when(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
           .thenAnswer((realInvocation) async => null);
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       final data = await secureStorage.readKeys();
       expect(data, <String>[]);
       verify(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
@@ -75,7 +80,8 @@ void main() {
       final mockSecureStorage = MockFlutterSecureStorage();
       when(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
           .thenAnswer((realInvocation) async => '');
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       final data = await secureStorage.readKeys();
       expect(data, ['']);
       verify(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
@@ -86,7 +92,8 @@ void main() {
       final mockSecureStorage = MockFlutterSecureStorage();
       when(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
           .thenAnswer((realInvocation) async => 'test');
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       final data = await secureStorage.readKeys();
       expect(data, ['test']);
       verify(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
@@ -97,7 +104,8 @@ void main() {
       final mockSecureStorage = MockFlutterSecureStorage();
       when(mockSecureStorage.read(key: 'flutter_file_storage_keys')).thenAnswer(
           (realInvocation) async => 'sdalkjfia3924e,sdajlkfjal390u2');
-      final secureStorage = KeyValueStorage(mockSecureStorage);
+      final secureStorage = KeyValueStorage(mockSecureStorage,
+          keysStorageKey: 'flutter_file_storage_keys');
       final data = await secureStorage.readKeys();
       expect(data, ['sdalkjfia3924e', 'sdajlkfjal390u2']);
       verify(mockSecureStorage.read(key: 'flutter_file_storage_keys'))
