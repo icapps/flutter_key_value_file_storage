@@ -1,4 +1,4 @@
-group 'com.icapps.flutter_file_storage'
+group 'com.icapps.flutter_key_value_file_storage'
 version '1.0.0'
 
 buildscript {

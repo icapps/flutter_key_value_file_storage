@@ -1,4 +1,4 @@
-package com.icapps.flutter_file_storage
+package com.icapps.flutter_key_value_file_storage
 
 import android.os.Handler
 import android.os.Looper
@@ -8,13 +8,13 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-class FlutterFileStoragePlugin : MethodCallHandler, FlutterPlugin {
+class FlutterKeyValueFileStoragePlugin : MethodCallHandler, FlutterPlugin {
 
     private var methodChannel: MethodChannel? = null
     private val mainHandler = Handler(Looper.getMainLooper())
 
     override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        methodChannel = MethodChannel(binding.binaryMessenger, "com.icapps.flutter_file_storage").also {
+        methodChannel = MethodChannel(binding.binaryMessenger, "com.icapps.flutter_key_value_file_storage").also {
             it.setMethodCallHandler(this)
         }
     }

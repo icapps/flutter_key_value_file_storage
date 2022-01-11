@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:flutter_file_storage/flutter_file_storage.dart';
+import 'package:flutter_key_value_file_storage/flutter_key_value_file_storage.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
