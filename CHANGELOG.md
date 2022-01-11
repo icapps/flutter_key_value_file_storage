@@ -1,3 +1,7 @@
+## 0.0.4 - 11/01/2022
+### Fixed
+* Tests
+
 ## 0.0.3 - 11/01/2022
 ### Breaking
 * Made the `keysStorageKey` required
