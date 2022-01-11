@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_file_storage/src/file_storage_manager/file_storage_manager.dart';
-import 'package:flutter_file_storage/src/file_storage_manager/flutter_file_storage_manager.dart';
-import 'package:flutter_file_storage/src/file_storage/file_storage.dart';
+import 'package:flutter_key_value_file_storage/src/file_storage_manager/file_storage_manager.dart';
+import 'package:flutter_key_value_file_storage/src/file_storage/file_storage.dart';
+import 'package:flutter_key_value_file_storage/src/file_storage_manager/flutter_file_storage_manager.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// FlutterFileStorage storage allows you to save, read and delete files

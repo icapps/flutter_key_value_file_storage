@@ -1,7 +1,7 @@
-name: flutter_file_storage
-description: An implementation for flutter file storage. For example keychain has a soft limit of 4kb. Using the file system instead we can store much larger content
-version: 0.0.5
-homepage: https://github.com/icapps/flutter_file_storage
+name: flutter_key_value_file_storage
+description: An implementation to save big chunks of content to a file
+version: 0.0.1
+homepage: https://github.com/icapps/flutter_key_value_file_storage
 
 environment:
   sdk: ">=2.14.0 <3.0.0"
@@ -27,7 +27,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.icapps.flutter_file_storage
-        pluginClass: FlutterFileStoragePlugin
+        package: com.icapps.flutter_key_value_file_storage
+        pluginClass: FlutterKeyValueFileStoragePlugin
       ios:
-        pluginClass: FlutterFileStoragePlugin
+        pluginClass: FlutterKeyValueFileStoragePlugin

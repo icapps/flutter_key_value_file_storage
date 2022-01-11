@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_file_storage/flutter_file_storage.dart';
+import 'package:flutter_key_value_file_storage/flutter_key_value_file_storage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {

@@ -2,10 +2,10 @@ import Flutter
 import UIKit
 
 @available(iOS 13.0, *)
-public class SwiftFlutterFileStoragePlugin: NSObject, FlutterPlugin {
+public class SwiftFlutterKeyValueFileStoragePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "com.icapps.flutter_file_storage", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterFileStoragePlugin()
+    let channel = FlutterMethodChannel(name: "com.icapps.flutter_key_value_file_storage", binaryMessenger: registrar.messenger())
+    let instance = SwiftFlutterKeyValueFileStoragePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
