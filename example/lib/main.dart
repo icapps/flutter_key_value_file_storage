@@ -18,12 +18,12 @@ class _MyAppState extends State<MyApp> {
   String _loadedContent = '';
   String _key = '';
   bool _loading = false;
-  late final FlutterFileStorage _fileStorage;
+  late final FlutterKeyValueFileStorage _fileStorage;
 
   @override
   void initState() {
     super.initState();
-    _fileStorage = FlutterFileStorage(const FlutterSecureStorage());
+    _fileStorage = FlutterKeyValueFileStorage(const FlutterSecureStorage());
   }
 
   @override

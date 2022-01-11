@@ -7,13 +7,13 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// FlutterFileStorage storage allows you to save, read and delete files
 /// The files are saved using the fileStorage but the content is always encrypted using: AES/GCM
-class FlutterFileStorage {
+class FlutterKeyValueFileStorage {
   late final FileStorageManager fileStorageManager;
 
   /// FlutterFileStorage will use
   ///   - storage to save the keys
   ///   - fileStorage to save, read, delete the file
-  FlutterFileStorage(
+  FlutterKeyValueFileStorage(
     FlutterSecureStorage storage, {
     FileStorage? fileStorage,
     String? keysStorageKey,

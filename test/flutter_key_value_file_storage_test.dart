@@ -26,9 +26,9 @@ void main() {
       when(mockFileStorage.write('dGVzdA==',
               Uint8List.fromList([99, 111, 110, 116, 101, 110, 116])))
           .thenAnswer((realInvocation) async => File('test_path'));
-      final flutterSecureStorage =
-          FlutterFileStorage(mockSecureStorage, fileStorage: mockFileStorage);
-      await flutterSecureStorage.write(key: 'test', value: 'content');
+      final keyValueFileStorage = FlutterKeyValueFileStorage(mockSecureStorage,
+          fileStorage: mockFileStorage);
+      await keyValueFileStorage.write(key: 'test', value: 'content');
       verify(mockSecureStorage.write(
               key: 'flutter_key_value_file_storage_keys', value: 'dGVzdA=='))
           .called(1);
@@ -55,9 +55,9 @@ void main() {
       when(mockFileStorage.write('dGVzdA==',
               Uint8List.fromList([99, 111, 110, 116, 101, 110, 116])))
           .thenAnswer((realInvocation) async => File('test_path'));
-      final flutterFileStorage =
-          FlutterFileStorage(mockSecureStorage, fileStorage: mockFileStorage);
-      await flutterFileStorage.write(key: 'test', value: 'content');
+      final keyValueFileStorage = FlutterKeyValueFileStorage(mockSecureStorage,
+          fileStorage: mockFileStorage);
+      await keyValueFileStorage.write(key: 'test', value: 'content');
       reset(mockFileStorage);
       reset(mockSecureStorage);
 
@@ -70,7 +70,7 @@ void main() {
               Uint8List.fromList([99, 111, 110, 116, 101, 110, 116])))
           .thenAnswer((realInvocation) async => File('test_path'));
 
-      await flutterFileStorage.write(key: 'test2', value: 'content');
+      await keyValueFileStorage.write(key: 'test2', value: 'content');
       verify(mockSecureStorage.write(
               key: 'flutter_key_value_file_storage_keys',
               value: 'dGVzdA==,dGVzdDI='))
