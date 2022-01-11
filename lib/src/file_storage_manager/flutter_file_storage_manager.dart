@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_file_storage/src/file_storage/file_storage.dart';
@@ -14,26 +15,23 @@ class FlutterFileStorageManager extends FileStorageManager {
 
   @override
   Future<void> performWrite(
-      {required String fileName, required Uint8List value}) async {
-    await fileStorage.write(fileName, value);
+      {required String key, required Uint8List value}) async {
+    await fileStorage.write(_filename(key), value);
   }
 
   @override
-  Future<Uint8List?> performRead({required String fileName}) async {
-    return fileStorage.read(fileName);
+  Future<Uint8List?> performRead({required String key}) async {
+    return fileStorage.read(_filename(key));
   }
 
   @override
-  Future<bool> performContainsKey({required String fileName}) =>
-      fileStorage.exists(fileName);
+  Future<bool> performContainsKey({required String key}) =>
+      fileStorage.exists(_filename(key));
 
   @override
-  Future<void> performDelete({required String fileName}) async {
-    await fileStorage.delete(fileName);
+  Future<void> performDelete({required String key}) async {
+    await fileStorage.delete(_filename(key));
   }
 
-  @override
-  Future<void> performDeleteAll(Set<String> keys) async {
-    await Future.wait(keys.map((key) => delete(key: key)));
-  }
+  String _filename(String key) => base64Encode(utf8.encode(key));
 }

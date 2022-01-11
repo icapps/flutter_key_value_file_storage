@@ -46,7 +46,7 @@ abstract class FileStorageManager {
       final convertedValue = (value is String)
           ? Uint8List.fromList(utf8.encode(value))
           : value as Uint8List;
-      await performWrite(fileName: _filename(key), value: convertedValue);
+      await performWrite(key: key, value: convertedValue);
       await _getKeys();
       _keys.add(key);
       await _updateKeys();
@@ -59,7 +59,7 @@ abstract class FileStorageManager {
   Future<T?> read<T>({required String key}) async {
     assert(key.isNotEmpty, 'key must not be empty');
     return _synchronized(key, () async {
-      final result = await performRead(fileName: _filename(key));
+      final result = await performRead(key: key);
       if (result == null) return null;
       if (T == String) return utf8.decode(result) as T;
       return result as T;
@@ -74,7 +74,7 @@ abstract class FileStorageManager {
     return _synchronized(key, () async {
       await _getKeys();
       if (!_keys.contains(key)) return false;
-      return performContainsKey(fileName: key);
+      return performContainsKey(key: key);
     });
   }
 
@@ -86,7 +86,7 @@ abstract class FileStorageManager {
   }) async {
     assert(key.isNotEmpty, 'key must not be empty');
     await _synchronized(key, () async {
-      await performDelete(fileName: _filename(key));
+      await performDelete(key: key);
       await _getKeys();
       _keys.remove(key);
       await _updateKeys();
@@ -102,11 +102,9 @@ abstract class FileStorageManager {
   /// Deletes all keys with associated values.
   Future<void> deleteAll() async {
     await _getKeys();
-    await performDeleteAll(_keys);
+    await Future.wait(_keys.map((key) => delete(key: key)));
     await _getKeys();
   }
-
-  String _filename(String key) => '${base64Encode(utf8.encode(key))}.enc';
 
   Future<void> _updateKeys() async {
     final encodedData = _keys.map((e) => base64Encode(utf8.encode(e))).toList();
@@ -133,14 +131,11 @@ abstract class FileStorageManager {
     }
   }
 
-  Future<void> performWrite(
-      {required String fileName, required Uint8List value});
+  Future<void> performWrite({required String key, required Uint8List value});
 
-  Future<Uint8List?> performRead({required String fileName});
+  Future<Uint8List?> performRead({required String key});
 
-  Future<bool> performContainsKey({required String fileName});
+  Future<bool> performContainsKey({required String key});
 
-  Future<void> performDelete({required String fileName});
-
-  Future<void> performDeleteAll(Set<String> keys);
+  Future<void> performDelete({required String key});
 }
