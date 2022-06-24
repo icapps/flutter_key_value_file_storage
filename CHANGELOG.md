@@ -1,3 +1,7 @@
+## 0.0.4 - 24/06/2022
+### Updated
+* Dependencies
+
 ## 0.0.3 - 04/04/2022
 ### Breaking
 * Updated the min sdk to 16 on Android
