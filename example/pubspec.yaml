@@ -19,5 +19,8 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
 
+dependency_overrides:
+  flutter_secure_storage: ^6.0.0
+
 flutter:
   uses-material-design: true

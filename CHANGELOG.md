@@ -1,3 +1,7 @@
+## 0.0.5 - 17/10/2022
+### Updated
+* Dependency updates
+
 ## 0.0.4 - 24/06/2022
 ### Updated
 * Dependencies
