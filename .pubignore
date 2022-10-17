@@ -9,6 +9,8 @@
 .history
 .svn/
 
+test/
+
 # IntelliJ related
 *.iml
 *.ipr
@@ -27,4 +29,7 @@
 .dart_tool/
 .packages
 build/
-example/
+example/ios
+example/android
+example/test
+example/web
