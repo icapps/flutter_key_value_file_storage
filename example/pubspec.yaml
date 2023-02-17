@@ -11,16 +11,13 @@ dependencies:
     sdk: flutter
   flutter_key_value_file_storage:
     path: ../
-  flutter_secure_storage: ^5.0.2
-  cupertino_icons: ^1.0.2
+  flutter_secure_storage: ^8.0.0
+  cupertino_icons: ^1.0.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
-
-dependency_overrides:
-  flutter_secure_storage: ^6.0.0
+  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true
