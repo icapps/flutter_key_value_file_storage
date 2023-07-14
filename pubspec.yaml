@@ -1,14 +1,14 @@
 name: flutter_key_value_file_storage
 description: An implementation to save big chunks of content to a file
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/icapps/flutter_key_value_file_storage
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.14.0 <4.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
-  device_info_plus: ^8.1.0
+  device_info_plus: ^9.0.0
   flutter:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
