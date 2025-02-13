@@ -23,6 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
+    namespace 'com.icapps.flutter_key_value_file_storage_example'
     compileSdk 34
 
     compileOptions {
