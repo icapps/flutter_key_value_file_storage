@@ -2,7 +2,7 @@ group 'com.icapps.flutter_key_value_file_storage'
 version '1.0.0'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.9.10'
     repositories {
         google()
         mavenCentral()
@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdk 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
