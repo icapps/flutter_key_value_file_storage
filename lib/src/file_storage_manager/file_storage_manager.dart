@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter_key_value_file_storage/src/file_storage/documents_file_storage.dart';
-import 'package:flutter_key_value_file_storage/src/key_value_storage.dart';
 import 'package:flutter_key_value_file_storage/src/file_storage/file_storage.dart';
+import 'package:flutter_key_value_file_storage/src/key_value_storage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:synchronized/synchronized.dart';
 
@@ -124,10 +124,12 @@ abstract class FileStorageManager {
         () => _locks.putIfAbsent(key, () => Lock(reentrant: true)));
     try {
       final result = await lock.synchronized(() => computation.call());
-      await _locksLock.synchronized(() => _locks.remove(lock));
+      await _locksLock
+          .synchronized(() => _locks.removeWhere((_, value) => value == lock));
       return result;
     } finally {
-      await _locksLock.synchronized(() => _locks.remove(lock));
+      await _locksLock
+          .synchronized(() => _locks.removeWhere((_, value) => value == lock));
     }
   }
 
