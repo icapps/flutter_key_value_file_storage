@@ -1,4 +1,4 @@
-## 0.0.9 - 13/02/2025
+## 0.1.0 - 13/02/2025
 ### Updated
 * Dependency updates
 * [Migrate to apply Gradle plugins with the declarative plugins block](https://docs.flutter.dev/release/breaking-changes/flutter-gradle-plugin-apply)
